@@ -1,0 +1,101 @@
+{
+  "status": "METHOD LOCKED FOR PRIMARY ANALYSIS",
+  "document": "global_scvi/SCVI_PRIMARY_METHOD_LOCK.md",
+  "population": {
+    "eligible_production_cells": 21710586,
+    "production_training_cells": 21710586,
+    "validation_holdout_cells": 0,
+    "calibration_validation_cells_returned_to_production_training": 10000
+  },
+  "input": {
+    "counts": "raw integer UMI counts",
+    "feature_count": 2000,
+    "feature_set": "exact frozen ordered 2,000 HVGs used by primary PCA and full-scale scVI calibration",
+    "ordered_feature_sha256": "4c8af16cbb81ba473e5a773014206298f1cbd88940996580168fb57f0b8eccbb",
+    "excluded_features": [
+      "CUSTOM001_PuroR"
+    ]
+  },
+  "architecture": {
+    "n_hidden": 128,
+    "n_latent": 50,
+    "n_layers": 1,
+    "dropout_rate": 0.1,
+    "dispersion": "gene",
+    "latent_distribution": "normal",
+    "gene_likelihood": "zinb"
+  },
+  "covariates": {
+    "batch_key": null,
+    "categorical_covariate_keys": [],
+    "continuous_covariate_keys": []
+  },
+  "optimization": {
+    "optimizer": "Adam",
+    "learning_rate": 0.005,
+    "learning_rate_family": "F3",
+    "weight_decay": 1e-06,
+    "batch_size": 4096,
+    "kl_warmup_optimizer_steps": 4000,
+    "reduce_lr_on_plateau": false,
+    "initialization": "fresh; do not resume from calibration model"
+  },
+  "training_duration": {
+    "rule": "exactly one complete epoch over the full production population",
+    "optimizer_steps": 5301,
+    "batches_per_epoch": 5301,
+    "full_batches": 5300,
+    "final_partial_batch_cells": 1786,
+    "drop_last": false,
+    "coverage": "every one of the 21,710,586 production cells contributes exactly once during the epoch",
+    "calibration_epoch_steps_not_applicable_to_production": 5298,
+    "calibration_training_cells": 21700586,
+    "calibration_heldout_cells": 10000
+  },
+  "seeds": [
+    {
+      "seed": 42,
+      "role": "PRIMARY_PREDECLARED_SEED"
+    },
+    {
+      "seed": 4242,
+      "role": "ROBUSTNESS_REPLICATE"
+    },
+    {
+      "seed": 2026,
+      "role": "ROBUSTNESS_REPLICATE"
+    }
+  ],
+  "selection_rationale": {
+    "full_scale_a100_calibration_runs_completed": 6,
+    "f3_lr_0_005_advantage_over_f2_lr_0_003": "weak but consistent in the matched near-optimal early region; descriptive only, not statistically conclusive with three seeds",
+    "validation_optima_relative_to_one_epoch": "observed after one calibration epoch",
+    "additional_optimization_after_population_coverage": "small, seed-variable held-out validation improvements",
+    "long_training_behavior": "held-out validation negative ELBO worsened at 10,098 steps versus 8,898 for all six runs; 40,000-step endpoints were worse than per-run best checkpoints",
+    "one_epoch_choice": "conservative full-population stopping point; not claimed to be the exact validation-optimal checkpoint",
+    "downstream_perturbation_geometry_used_for_selection": false,
+    "biological_results_used_for_selection": false,
+    "representation_comparisons_used_for_selection": false
+  },
+  "supporting_analyses": [
+    "global_scvi/training_sweeps/primary_2k_fullscale_validation_v1/reports/FULLSCALE_CALIBRATION_SUMMARY.md",
+    "global_scvi/training_sweeps/primary_2k_fullscale_validation_v1/reports/EARLY_REGION_CALIBRATION_ANALYSIS.md",
+    "global_scvi/training_sweeps/primary_2k_fullscale_validation_v1/reports/ONE_EPOCH_VS_EARLY_STOP_ANALYSIS.md"
+  ],
+  "change_control": "Do not silently modify locked parameters. If an implementation problem requires a change, stop before production submission and create a versioned amendment documenting the reason, changed parameter, affected outputs, and required downstream regeneration. Preserve this lock as the original decision record.",
+  "production_execution_prerequisites": {
+    "canonical_implementation_methodology": "V33_CANONICAL_SCVI_FITTING.md",
+    "required_before_training_submission": [
+      "all production shards pass validation",
+      "global cell-order audit passes",
+      "training-history capture corrected and verified",
+      "run-specific configuration reviewed against an approved scale/performance benchmark"
+    ],
+    "preserve_v33_requirements": [
+      "raw-count inputs",
+      "validated source shards",
+      "frozen gene axis",
+      "output validation"
+    ]
+  }
+}

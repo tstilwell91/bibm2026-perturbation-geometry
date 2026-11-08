@@ -1,0 +1,53 @@
+{
+  "schema": "locked_primary_scvi_production_config_v1",
+  "method_lock_path": "global_scvi/SCVI_PRIMARY_METHOD_LOCK.md",
+  "method_lock_sha256": "686937596e2d864b1a25e6be6e34c9bee543b94451a9a6a2ee662e70374d04f1",
+  "method_lock_json_path": "global_scvi/SCVI_PRIMARY_METHOD_LOCK.json",
+  "method_lock_json_sha256": "612508c8279a2b65b08d0bd90d9af25b0f8b5ff0fcc5fe60b4d84198e2a2ad5c",
+  "feature_file_path": "source/derived/pca_direct_full_materialized_v28/runs/job-6848910/model/pca_features_2000.txt",
+  "feature_sha256": "4c8af16cbb81ba473e5a773014206298f1cbd88940996580168fb57f0b8eccbb",
+  "expected_population": 21710586,
+  "expected_batches_per_epoch": 5301,
+  "expected_optimizer_updates": 5301,
+  "max_epochs": 1,
+  "validation_cells": 0,
+  "input": {
+    "counts": "raw integer UMI counts",
+    "feature_count": 2000
+  },
+  "architecture": {
+    "n_hidden": 128,
+    "n_latent": 50,
+    "n_layers": 1,
+    "dropout_rate": 0.1,
+    "dispersion": "gene",
+    "latent_distribution": "normal",
+    "gene_likelihood": "zinb"
+  },
+  "covariates": {
+    "batch_key": null,
+    "categorical_covariate_keys": [],
+    "continuous_covariate_keys": []
+  },
+  "optimization": {
+    "optimizer": "Adam",
+    "learning_rate": 0.005,
+    "weight_decay": 1e-06,
+    "batch_size": 4096,
+    "kl_warmup_optimizer_steps": 4000,
+    "reduce_lr_on_plateau": false
+  },
+  "training": {
+    "duration": "exactly one complete epoch over all production cells",
+    "checkpoint_interval_steps": 1000,
+    "progress_interval_steps": 250,
+    "drop_last": false
+  },
+  "input_paths": {
+    "production_shards": "global_scvi/production_input_2k_v1/shards",
+    "reusable_group_metadata": "global_scvi/production_input_2k_v1/reusable_views/fullscale_validation_v1"
+  },
+  "seed": 42,
+  "seed_role": "PRIMARY_PREDECLARED_SEED",
+  "run_output_path": "global_scvi/final/primary_2k_allcell_v1/seed42"
+}

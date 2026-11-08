@@ -1,0 +1,5 @@
+resource	raw_relationships	parsed_unique_pairs	mapped_unique_pairs	unique_mapped_genes	mapping_failures_pairs	mapping_failures_note
+HuMAP3	159451	95680	69489	9812	26191	pairs with one or both symbols outside canonical target universe
+Reactome	124865	38307	21610	3870	16697	pairs with one or both Ensembl-mapped symbols outside canonical target universe
+SIGNOR	18421	12934	9266	3665	3668	pairs with one or both symbols outside canonical target universe
+STRING	473860	236930	162483	10729	74447	pairs with one or both symbols outside canonical target universe

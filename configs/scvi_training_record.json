@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "completed_utc": "2026-09-29T21:46:05+00:00",
+  "seed": 42,
+  "seed_role": "PRIMARY_PREDECLARED_SEED",
+  "method_lock_sha256": "686937596e2d864b1a25e6be6e34c9bee543b94451a9a6a2ee662e70374d04f1",
+  "global_step": 5301,
+  "completed_epochs": 1,
+  "cells_visited_once": 21710586,
+  "validation_cells": 0,
+  "model_path": "global_scvi/final/primary_2k_allcell_v1/seed42/model/annbatch_scvi_state.pt",
+  "training_state_path": "global_scvi/final/primary_2k_allcell_v1/seed42/model/annbatch_scvi_state.pt",
+  "intermediate_restart_checkpoints": "disabled; incompatible scvi SaveCheckpoint requires adata_manager and omits custom datamodule",
+  "model_reload": "PASS",
+  "all_parameters_finite": true,
+  "post_reload_latent_inference": {
+    "rows": 4096,
+    "dimensions": 50,
+    "all_finite": true,
+    "mean_abs": 0.4012240469455719,
+    "same_batch_cell_indices": true,
+    "batch_cell_index_count": 4096,
+    "comparison_to_original": "PASS",
+    "comparison_status": "PASS",
+    "atol": 1e-05,
+    "rtol": 0.0,
+    "configured_max_abs_tolerance": 1e-05,
+    "max_abs_difference": 9.5367431640625e-06,
+    "max_abs_tolerance_pass": true
+  },
+  "final_kl_weight": 1.0
+}

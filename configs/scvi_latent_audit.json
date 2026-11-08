@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "rows": 21710586,
+  "dimensions": 50,
+  "dtype": "float32",
+  "all_finite": true,
+  "duplicate_cell_ids": 0,
+  "missing_cell_ids": 0,
+  "unexpected_cell_ids": 0,
+  "cell_ids": "PASS; exact row-by-row match to canonical production manifests",
+  "production_population_membership": "PASS; exact manifest membership; global audit reports all expected unique IDs",
+  "feature_provenance": {
+    "path": "source/derived/pca_direct_full_materialized_v28/runs/job-6848910/model/pca_features_2000.txt",
+    "sha256": "4c8af16cbb81ba473e5a773014206298f1cbd88940996580168fb57f0b8eccbb"
+  },
+  "model_path": "global_scvi/final/primary_2k_allcell_v1/seed42/model/annbatch_scvi_state.pt",
+  "model_sha256": "9691e79361f3c703b0894ac361b7034a587106790167f2b0f11e2b7a5fb76c4f",
+  "config_sha256": "4bcce5fb76a02b254b78b734cc8e5bbab24238391b03601de0c7f42ca699a1f3",
+  "method_lock_sha256": "686937596e2d864b1a25e6be6e34c9bee543b94451a9a6a2ee662e70374d04f1",
+  "production_input_audit_sha256": "96e8eecb6e98f08c3e01034918182c00b3114a6ee685a9f689ef7fa1216b421c",
+  "matrix_path": "global_scvi/final/primary_2k_allcell_v1/seed42/latent_v2/latent_50d_float32.npy",
+  "matrix_sha256": "f4448b407ed589b2a4ac05f249afeeb3a8c8146ff024a4000795e0f85c7601ad",
+  "cell_id_sidecar_path": "global_scvi/final/primary_2k_allcell_v1/seed42/latent_v2/cell_ids_by_row.tsv.gz",
+  "cell_id_sidecar_sha256": "fba07a427da22b441a34835ee3ca3f80fbae565ae2bdf4ca0d783e00fa7b3873",
+  "completed_utc": "2026-09-29T22:29:31+00:00",
+  "preflight_path": "global_scvi/final/primary_2k_allcell_v1/seed42/reports/latent_extraction_preflight.json",
+  "post_reload_smoke_inference": "PASS; previously audited at seed42 TRAINING_SUCCESS.json"
+}

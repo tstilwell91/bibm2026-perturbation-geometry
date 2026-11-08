@@ -1,0 +1,29 @@
+{
+  "eligible_cells": 21710586,
+  "target_cells": 20771051,
+  "NTC_cells": 939535,
+  "response_units": 144368,
+  "targets": 12604,
+  "donors": [
+    "D1",
+    "D2",
+    "D3",
+    "D4"
+  ],
+  "contexts": [
+    "Rest",
+    "Stim8hr",
+    "Stim48hr"
+  ],
+  "NTC_matching_strata": 284,
+  "common_cell_index_sha256": "c3b97ef6e819b46d3afdcb08035771eafc709a09720a966da941df2fb7d414eb",
+  "frozen_manifest_sha256": "d51671681158fce4443ad19a207f40b6d996dfb863f4c3398a754689c9ab59ad",
+  "ordered_2k_HVG_sha256": "4c8af16cbb81ba473e5a773014206298f1cbd88940996580168fb57f0b8eccbb",
+  "dimensions": {
+    "pca": 50,
+    "scvi": 50,
+    "geneformer": 1152,
+    "state": 2058
+  },
+  "source": "Finalized V31 construction and common-cell audits; source files enumerated in MANIFEST.csv."
+}

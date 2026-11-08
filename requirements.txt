@@ -1,0 +1,13 @@
+# Analysis dependency names; this is NOT a tested portable environment lock.
+# Pins below are recorded in finalized analysis/robustness artifacts.
+numpy==2.2.6
+pandas==3.0.5
+scipy==1.18.1
+pyarrow==25.0.1
+networkx==3.5
+# Used by included implementations; no finalized version pin established here.
+h5py
+scikit-learn
+threadpoolctl
+numba
+matplotlib

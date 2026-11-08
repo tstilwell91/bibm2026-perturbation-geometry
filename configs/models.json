@@ -1,0 +1,136 @@
+{
+  "scope": "Recorded finalized representations; weights and encoder software are not distributed.",
+  "geneformer": {
+    "repository": "ctheodoris/Geneformer",
+    "subfolder": "Geneformer-V2-316M",
+    "content_matching_upstream_revision": "04c2b2e84da7c0f385c3f9ad8f3ec24bab6650e5",
+    "revision_evidence": "Upstream Git-LFS weight OID and tokenizer/extractor source hashes match production audit; original download revision not logged.",
+    "checkpoint_file": "model.safetensors",
+    "checkpoint_sha256": "965ceccea81953d362081ef3843560a0e4fef88d396c28017881f1e94b1246f3",
+    "dictionary_and_source_sha256": {
+      "model.safetensors": "965ceccea81953d362081ef3843560a0e4fef88d396c28017881f1e94b1246f3",
+      "token_dictionary": "67c445f4385127adfc48dcc072320cd65d6822829bf27dd38070e6e787bc597f",
+      "ensembl_mapping_dict": "0819bcbd869cfa14279449b037eb9ed1d09a91310e77bd1a19d927465030e95c",
+      "gene_median_dictionary": "a51c53f6a771d64508dfaf61529df70e394c53bd20856926117ae5d641a24bf5",
+      "geneformer/tokenizer.py": "689b71a916b75fa618fbb460a7fc460c3ab32d41e4f98064efb0ebb3ee921002",
+      "geneformer/emb_extractor.py": "50d4eee1677b376f4d2c50887558450fdd39150c4ed902833e9929f25f17adb0"
+    },
+    "settings": {
+      "model": "Geneformer V2-316M",
+      "checkpoint_sha256": "965ceccea81953d362081ef3843560a0e4fef88d396c28017881f1e94b1246f3",
+      "tokenizer": "TranscriptomeTokenizer V2, gc104M dictionaries, model_input_size=4096, special_token=True, collapse_gene_ids=True",
+      "input": "raw UMI counts, 18,129 canonical endogenous genes (CUSTOM001_PuroR excluded)",
+      "precision": "BF16 autocast (torch.autocast cuda bfloat16); FP32 weights; TF32 off",
+      "layer": "second-to-last (emb_layer=-1 -> hidden_states[17] of 18 blocks)",
+      "representation": "CLS",
+      "embedding_dim": 1152,
+      "ordering": "Geneformer downsample_and_sort (length-descending) within chunk",
+      "attention": "default PyTorch SDPA",
+      "grad": "disabled (torch.no_grad), model.eval()",
+      "embedding_storage": "float32 .npy, manifest row order"
+    },
+    "runtime": {
+      "gpu": "NVIDIA H100 80GB HBM3",
+      "torch": "2.8.0+cu128",
+      "cuda": "12.8",
+      "attn_implementation": "sdpa",
+      "python": "3.12.8"
+    },
+    "transformers": "4.46.0 (recorded inference configuration; model config metadata instead says 4.44.2)",
+    "source_audit": "geneformer_global_cell_embeddings/audits/D1_Rest.completion_audit.json"
+  },
+  "state": {
+    "repository": "arcinstitute/SE-600M",
+    "download_revision": "5a9a80f44f7ce32ce57059933ef0d735d7c10ce5",
+    "download_revision_evidence": "checkpoint and protein-embedding .cache/huggingface/download/*.metadata",
+    "checkpoint_file": "se600m_epoch16.ckpt",
+    "checkpoint_sha256": "b49bab144471f3b9318e1a661fb7b78bfa5110b500aee5c89d660f5f5927b7a5",
+    "protein_embeddings_file": "protein_embeddings.pt",
+    "protein_embeddings_sha256": "a210e1cc7901513999b2bca3836ba9e2f203cd008be4e9a9d6412a2267de9748",
+    "checkpoint_config_name": "vci_1.5.0_600M_basecount_tahoe_cxg",
+    "arc_state": "0.11.3",
+    "source_revision": "9bbfe78a434a55205e4de834e1ea99f85f7a3add",
+    "input": "raw integer-valued UMI; STATE-native preprocessing; no external log/CP10K/scaling/HVG restriction",
+    "canonical_genes": 18129,
+    "mapped_genes": 17958,
+    "unmapped_genes": 171,
+    "excluded_feature": "CUSTOM001_PuroR",
+    "embedding": "normalized 2048D CLS plus official 10D dataset correction",
+    "output_dtype": "float32",
+    "sequence_length": 2048,
+    "batch_size": 8,
+    "seed": 20260904,
+    "shuffle": false,
+    "dataloader_workers": 1,
+    "precision": "native CUDA BF16",
+    "dependency_limit": "Complete contemporaneous inference environment lock not recorded in shard provenance.",
+    "source_audit": "source/derived/v35_state_all_targets/STATE/shards/D1_Rest/provenance.json"
+  },
+  "pca": {
+    "run": "job-6848910",
+    "cells": 21710586,
+    "canonical_genes": 18129,
+    "HVGs": 2000,
+    "PCs": 50,
+    "normalization": {
+      "method": "LogNormalize",
+      "formula": "log1p(raw_count / library_total * 10000)",
+      "scale_factor": 10000,
+      "library_total": "per-cell sum across all 18,129 canonical endogenous genes",
+      "selected_features": 2000,
+      "hvg_method": "frozen global VST HVGs; not recomputed",
+      "hvg_source_sha256": "ca0ddd506af7a2caeb3990b1668904c3694b76ab31cf7e3abbc5c7ad0e0a6d3a",
+      "centering": "per-gene mean across all 21,710,586 cells",
+      "scaling": "per-gene sample standard deviation across all cells",
+      "scale_max": 10,
+      "genes": 18129,
+      "cells": 21710586,
+      "excluded": "CUSTOM001_PuroR",
+      "PCA_THREADS": 40,
+      "feature_file": "model/pca_features_2000.txt",
+      "cell_order_file": "audits/full_population_cell_ids.txt"
+    },
+    "solver": {
+      "api": "BPCells::svds",
+      "k": 50,
+      "nu": 50,
+      "nv": 50,
+      "threads": 40,
+      "tol": 1e-05,
+      "maxitr": 1000,
+      "ncv": "not recorded",
+      "seed": "not explicitly recorded"
+    },
+    "clipping": "symmetric [-10,10], as implemented in production materialized R script",
+    "software": {
+      "BPCells": "0.3.1",
+      "Seurat": "5.3.0",
+      "SeuratObject": "5.2.0",
+      "R": "R/4.5.1 launcher module; no full sessionInfo captured here"
+    },
+    "score_sha256": "9ff4ac30ececedabcc5cf4ca98ac61c5ce7821a14aee487d48f802421a394dcc",
+    "source_audit": "source/derived/pca_direct_full_materialized_v28/runs/job-6848910/audits/full_pca_results.json"
+  },
+  "scvi": {
+    "primary_config": "global_scvi/final/primary_2k_allcell_v1/seed42/config.json",
+    "method_lock": "global_scvi/SCVI_PRIMARY_METHOD_LOCK.json",
+    "model_file": "annbatch_scvi_state.pt",
+    "model_sha256": "9691e79361f3c703b0894ac361b7034a587106790167f2b0f11e2b7a5fb76c4f",
+    "latent_sha256": "f4448b407ed589b2a4ac05f249afeeb3a8c8146ff024a4000795e0f85c7601ad",
+    "latent_directory": "latent_v2",
+    "representation": "50D posterior means, float32",
+    "software": {
+      "scvi-tools": "1.5.0.post1",
+      "torch": "2.8.0+cu128"
+    },
+    "software_evidence": "Versions recorded in production-owned model-state metadata; no model unpickling is required by this release.",
+    "source_audit": "global_scvi/final/primary_2k_allcell_v1/seed42/latent_v2/LATENT_EXTRACTION_AUDIT.json"
+  },
+  "pretraining_overlap": {
+    "dataset": "Zhu et al.; GSE314342 / SRP643211",
+    "status": "Neither membership nor exclusion established by a dataset/cell-level audit. No publication-date inference was used.",
+    "geneformer_corpus": "Genecorpus-104M; https://huggingface.co/datasets/theodoris-lab/Genecorpus-104M",
+    "state_sources": "scBaseCount, CELLxGENE, Tahoe-100M; checkpoint config refers to upstream training CSVs not supplied here.",
+    "warning": "V35 OVERLAP_INPUT_VALIDATION concerns historical/production inference inputs, not pretraining contamination."
+  }
+}
